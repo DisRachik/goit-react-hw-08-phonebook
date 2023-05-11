@@ -4,23 +4,19 @@ import { Section, ContactForm, ContactList, Filter } from 'components';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
 
   addContact = newContact => {
-    const auditNewContact = newContact.name.toLowerCase();
+    const { name } = newContact;
+    const auditNewContact = name.toLowerCase();
     if (
       this.state.contacts.find(
         ({ name }) => name.toLowerCase() === auditNewContact
       )
     ) {
-      alert(`${newContact.name} is already in contacts`);
+      alert(`${name} is already in contacts`);
       return;
     }
 
@@ -40,15 +36,24 @@ export class App extends Component {
     );
   };
 
+  removeContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(({ id }) => id !== contactId),
+    }));
+  };
+
   render() {
+    const { addContact, onFilter, removeContact, displayContacts } = this;
+    const { filter } = this.state;
+
     return (
       <Layout>
         <Section title="Phonebook">
-          <ContactForm onSubmit={this.addContact} />
+          <ContactForm onSubmit={addContact} />
         </Section>
         <Section title="Contacts">
-          <Filter value={this.state.filter} onChange={this.onFilter} />
-          <ContactList contacts={this.displayContacts()} />
+          <Filter value={filter} onChange={onFilter} />
+          <ContactList contacts={displayContacts()} onRemove={removeContact} />
         </Section>
       </Layout>
     );
