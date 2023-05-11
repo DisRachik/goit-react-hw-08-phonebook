@@ -19,9 +19,15 @@ export const ContactItem = styled.li`
   font-weight: 700;
 
   border-bottom: 1px solid ${props => props.theme.colors.gray};
+
+  svg {
+    flex-shrink: 0;
+  }
 `;
 
 export const BtnDelete = styled.button`
+  flex-shrink: 0;
+
   margin-left: auto;
   padding: ${props => props.theme.spacing(1)};
   width: ${props => props.theme.spacing(12)};

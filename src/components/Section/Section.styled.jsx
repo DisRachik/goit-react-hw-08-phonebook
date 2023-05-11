@@ -5,7 +5,7 @@ export const SectionWrap = styled.section`
   max-width: ${props => props.theme.spacing(125)};
   margin: 0 auto;
 
-  :not(:first-child) {
+  :not(:first-of-type) {
     margin-top: ${props => props.theme.spacing(5)};
   }
 `;

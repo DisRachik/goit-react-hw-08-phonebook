@@ -7,8 +7,11 @@ import {
 
 export const Form = styled(FormikForm)`
   margin-top: ${props => props.theme.spacing(5)};
-
   padding: ${props => props.theme.spacing(2)};
+
+  display: flex;
+  flex-direction: column;
+  gap: ${props => props.theme.spacing(2)};
 
   background: ${props => props.theme.colors.cardBackground};
   border: 2px solid ${props => props.theme.colors.accent};
