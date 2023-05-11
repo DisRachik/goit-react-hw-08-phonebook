@@ -13,7 +13,7 @@ import {
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string().required('Please enter a valid name'),
-  number: Yup.number().required('Please enter a valid name'),
+  number: Yup.string().required('Please enter a tel number'),
 });
 
 export const ContactForm = ({ onSubmit }) => (
@@ -49,7 +49,7 @@ export const ContactForm = ({ onSubmit }) => (
           required
         />
       </FormField>
-      <ErrorMessage name="name" component="div" />
+      <ErrorMessage name="number" component="div" />
 
       <ButtonForm type="submit">
         <RiUserAddFill size={24} />
