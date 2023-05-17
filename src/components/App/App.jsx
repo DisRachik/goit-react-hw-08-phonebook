@@ -3,11 +3,24 @@ import { nanoid } from 'nanoid';
 import { Layout } from './Layout.styled';
 import { Section, ContactForm, ContactList, Filter } from 'components';
 
+const SAVED_CONTACTS = 'contacts';
 export class App extends Component {
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const contactItem = localStorage.getItem(SAVED_CONTACTS);
+    contactItem && this.setState({ contacts: JSON.parse(contactItem) });
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem(SAVED_CONTACTS, JSON.stringify(contacts));
+    }
+  }
 
   addContact = newContact => {
     const { name } = newContact;
