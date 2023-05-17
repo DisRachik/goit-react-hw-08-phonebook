@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { nanoid } from 'nanoid';
 import { RiUserAddFill } from 'react-icons/ri';
 import {
   Form,
@@ -24,7 +23,7 @@ export const ContactForm = ({ onSubmit }) => (
     }}
     validationSchema={ContactSchema}
     onSubmit={(values, { resetForm }) => {
-      onSubmit({ ...values, id: nanoid() });
+      onSubmit(values);
       resetForm();
     }}
   >

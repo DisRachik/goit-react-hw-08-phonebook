@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 import { Layout } from './Layout.styled';
 import { Section, ContactForm, ContactList, Filter } from 'components';
 
@@ -21,7 +22,7 @@ export class App extends Component {
     }
 
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
+      contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
     }));
   };
 
@@ -43,17 +44,19 @@ export class App extends Component {
   };
 
   render() {
-    const { addContact, onFilter, removeContact, displayContacts } = this;
     const { filter } = this.state;
 
     return (
       <Layout>
         <Section title="Phonebook">
-          <ContactForm onSubmit={addContact} />
+          <ContactForm onSubmit={this.addContact} />
         </Section>
         <Section title="Contacts">
-          <Filter value={filter} onChange={onFilter} />
-          <ContactList contacts={displayContacts()} onRemove={removeContact} />
+          <Filter value={filter} onChange={this.onFilter} />
+          <ContactList
+            contacts={this.displayContacts()}
+            onRemove={this.removeContact}
+          />
         </Section>
       </Layout>
     );
