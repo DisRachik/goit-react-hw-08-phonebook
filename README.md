@@ -1,5 +1,5 @@
-goit-react-hw-02-phonebook
+goit-react-hw-03-phonebook
 
 ---
 
-Phonebook
+Phonebook (recording of contacts in the localStorage)
