@@ -1,5 +1,5 @@
-goit-react-hw-03-phonebook
+goit-react-hw-04-phonebook
 
 ---
 
-Phonebook (recording of contacts in the localStorage)
+## Phonebook (refactored [task](https://github.com/DisRachik/goit-react-hw-03-phonebook) to React Hooks)
