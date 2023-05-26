@@ -11,7 +11,7 @@ const savedContacts = () => {
 };
 
 export const App = () => {
-  const [contacts, setContacts] = useState(savedContacts());
+  const [contacts, setContacts] = useState(savedContacts);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
