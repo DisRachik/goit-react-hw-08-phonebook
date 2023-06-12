@@ -1,10 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contacts/selectors';
-import { addNewContact } from 'redux/contacts/contactsSlice';
-
 import { RiUserAddFill } from 'react-icons/ri';
 import {
   Form,
@@ -13,6 +9,7 @@ import {
   ButtonForm,
   ErrorMessage,
 } from './ContactForm.styled';
+import { useContacts } from 'redux/contacts/useContacts';
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string().required('Please enter a valid name'),
@@ -20,8 +17,7 @@ const ContactSchema = Yup.object().shape({
 });
 
 export const ContactForm = () => {
-  const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
+  const { contacts, addNewContact } = useContacts();
 
   return (
     <Formik
@@ -40,7 +36,7 @@ export const ContactForm = () => {
           return;
         }
 
-        dispatch(addNewContact(values));
+        addNewContact(values);
         resetForm();
       }}
     >

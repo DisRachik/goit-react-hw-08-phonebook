@@ -1,15 +1,10 @@
+import { useContacts } from 'redux/contacts/useContacts';
+
 import { RiBodyScanFill, RiUserUnfollowFill } from 'react-icons/ri';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contacts/contactsSlice';
-import { selectContacts, selectFilter } from 'redux/contacts/selectors';
-
 import { ContactItems, ContactItem, BtnDelete } from './ContactList.styled';
 
 export const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
-  const dispatch = useDispatch();
+  const { contacts, filter, deleteContact } = useContacts();
 
   const displayContacts = (() => {
     const normalizedFilter = filter.toLowerCase().trim();
@@ -25,7 +20,7 @@ export const ContactList = () => {
         <ContactItem key={id}>
           <RiBodyScanFill size={32} />
           {name}: <span>{number}</span>
-          <BtnDelete type="button" onClick={() => dispatch(deleteContact(id))}>
+          <BtnDelete type="button" onClick={() => deleteContact(id)}>
             <RiUserUnfollowFill size={24} />
           </BtnDelete>
         </ContactItem>
