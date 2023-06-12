@@ -1,5 +1,4 @@
 import { RiBodyScanFill, RiUserUnfollowFill } from 'react-icons/ri';
-import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contactsSlice';
@@ -7,16 +6,10 @@ import { selectContacts, selectFilter } from 'redux/contacts/selectors';
 
 import { ContactItems, ContactItem, BtnDelete } from './ContactList.styled';
 
-const SAVED_CONTACTS = 'contacts';
-
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    localStorage.setItem(SAVED_CONTACTS, JSON.stringify(contacts));
-  }, [contacts]);
 
   const displayContacts = (() => {
     const normalizedFilter = filter.toLowerCase().trim();
