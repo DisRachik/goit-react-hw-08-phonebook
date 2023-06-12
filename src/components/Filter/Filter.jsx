@@ -1,14 +1,18 @@
-import PropTypes from 'prop-types';
 import { FilterArea, FilterWrap } from './Filter.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFilter } from 'redux/contacts/selectors';
+import { filterContact } from 'redux/contacts/contactsSlice';
 
-export const Filter = ({ value, onChange }) => (
-  <FilterWrap>
-    <span>Find contacts by name</span>
-    <FilterArea type="text" value={value} onChange={onChange} />
-  </FilterWrap>
-);
+export const Filter = () => {
+  const filter = useSelector(selectFilter);
+  const dispatch = useDispatch();
 
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  const onFilter = e => dispatch(filterContact(e.target.value));
+
+  return (
+    <FilterWrap>
+      <span>Find contacts by name</span>
+      <FilterArea type="text" value={filter} onChange={onFilter} />
+    </FilterWrap>
+  );
 };
