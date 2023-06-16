@@ -1,5 +1,11 @@
-goit-react-hw-06-phonebook
+goit-react-hw-07-phonebook
 
 ---
 
-## Phonebook (refactored [task](https://github.com/DisRachik/goit-react-hw-04-phonebook) - changing code by adding state management using the [Redux Toolkit](https://redux-toolkit.js.org/))
+## App - Phonebook:
+
+- Used library [Redux Toolkit](https://redux-toolkit.js.org/)
+
+- add interaction with the backend to store contact data.
+- The backend is implemented using the UI service
+  [mockapi.io](https://mockapi.io/).
