@@ -3,7 +3,7 @@ import persistReducer from 'redux-persist/es/persistReducer';
 
 import storage from 'redux-persist/lib/storage';
 
-const initialState = { contacts: [], filter: '' };
+const initialState = { contacts: [] };
 
 const contactsSlice = createSlice({
   name: 'contact',
@@ -19,19 +19,8 @@ const contactsSlice = createSlice({
     deleteContact: (state, { payload }) => {
       state.contacts = state.contacts.filter(({ id }) => id !== payload);
     },
-
-    filterContacts: (state, { payload }) => {
-      state.filter = payload;
-    },
   },
 });
 
-const persistedContactsSlice = persistReducer(
-  { key: 'contacts', storage, blacklist: ['filter'] },
-  contactsSlice.reducer
-);
-
-export const { addNewContact, deleteContact, filterContacts } =
-  contactsSlice.actions;
-
-export default persistedContactsSlice;
+export const { addNewContact, deleteContact } = contactsSlice.actions;
+export const contactsReducer = contactsSlice.reducer;
