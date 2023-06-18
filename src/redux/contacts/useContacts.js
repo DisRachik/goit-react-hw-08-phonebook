@@ -3,6 +3,7 @@ import { selectContacts, selectFilter } from './selectors';
 
 import * as contactsActions from './contactsSlice';
 import * as filterActions from './filterSlice';
+import { deleteContactId } from './operations';
 
 export const useContacts = () => {
   const contacts = useSelector(selectContacts);
@@ -13,7 +14,7 @@ export const useContacts = () => {
     dispatch(contactsActions.addNewContact(newContact));
   };
   const deleteContact = id => {
-    dispatch(contactsActions.deleteContact(id));
+    dispatch(deleteContactId(id));
   };
   const filterContacts = value => {
     dispatch(filterActions.filterContacts(value));
