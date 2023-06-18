@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilter } from './selectors';
 
-import * as contactsActions from './contactsSlice';
 import * as filterActions from './filterSlice';
-import { deleteContactId } from './operations';
+import { addContact, deleteContactId } from './operations';
 
 export const useContacts = () => {
   const contacts = useSelector(selectContacts);
@@ -11,7 +10,7 @@ export const useContacts = () => {
   const dispatch = useDispatch();
 
   const addNewContact = newContact => {
-    dispatch(contactsActions.addNewContact(newContact));
+    dispatch(addContact(newContact));
   };
   const deleteContact = id => {
     dispatch(deleteContactId(id));
