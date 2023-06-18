@@ -1,24 +1,39 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
-import persistReducer from 'redux-persist/es/persistReducer';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts } from './operations';
 
-import storage from 'redux-persist/lib/storage';
-
-const initialState = { contacts: [] };
+const initialState = { items: [], isLoading: false, error: null };
 
 const contactsSlice = createSlice({
   name: 'contact',
   initialState,
-  reducers: {
-    addNewContact: {
-      reducer: (state, { payload }) => {
-        state.contacts.push(payload);
-      },
-      prepare: newContact => ({ payload: { ...newContact, id: nanoid() } }),
-    },
+  // reducers: {
+  //   addNewContact: {
+  //     reducer: (state, { payload }) => {
+  //       state.contacts.push(payload);
+  //     },
+  //     prepare: newContact => ({ payload: { ...newContact, id: nanoid() } }),
+  //   },
 
-    deleteContact: (state, { payload }) => {
-      state.contacts = state.contacts.filter(({ id }) => id !== payload);
-    },
+  //   deleteContact: (state, { payload }) => {
+  //     state.contacts = state.contacts.filter(({ id }) => id !== payload);
+  //   },
+  // },
+  extraReducers: builder => {
+    builder
+      // first fetch
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(fetchContacts.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchContacts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
+    // delete contact
   },
 });
 
