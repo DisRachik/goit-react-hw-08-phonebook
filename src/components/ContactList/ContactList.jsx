@@ -4,19 +4,11 @@ import { RiBodyScanFill, RiUserUnfollowFill } from 'react-icons/ri';
 import { ContactItems, ContactItem, BtnDelete } from './ContactList.styled';
 
 export const ContactList = () => {
-  const { contacts, filter, deleteContact } = useContacts();
-
-  const displayContacts = (() => {
-    const normalizedFilter = filter.toLowerCase().trim();
-
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter)
-    );
-  })();
+  const { contacts, deleteContact } = useContacts();
 
   return (
     <ContactItems>
-      {displayContacts.map(({ id, name, phone }) => (
+      {contacts.map(({ id, name, phone }) => (
         <ContactItem key={id}>
           <RiBodyScanFill size={32} />
           {name}: <span>{phone}</span>

@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectFilter } from './selectors';
+import { selectDisplayContact, selectFilter } from './selectors';
 
 import * as filterActions from './filterSlice';
 import { addContact, deleteContactId } from './operations';
 
 export const useContacts = () => {
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectDisplayContact);
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
