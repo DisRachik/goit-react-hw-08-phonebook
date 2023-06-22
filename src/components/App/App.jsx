@@ -1,37 +1,17 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { ThreeCircles } from 'react-loader-spinner';
-import { Layout } from './Layout.styled';
-import { Section, ContactForm, ContactList, Filter } from 'components';
-import { fetchContacts } from 'redux/contacts/operations';
-import { selectError, selectIsLoading } from 'redux/contacts/selectors';
+import { lazy } from 'react';
 
-export const App = () => {
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  const dispatch = useDispatch();
+import { SharedLayout } from 'components';
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+import { Navigate, Route, Routes } from 'react-router-dom';
+const Home = lazy(() => import('pages/Home'));
+const Phonebook = lazy(() => import('pages/Phonebook'));
 
-  return (
-    <Layout>
-      <Section title="Phonebook">
-        <ContactForm />
-      </Section>
-      <Section title="Contacts">
-        <Filter />
-        {isLoading ? (
-          <ThreeCircles
-            wrapperStyle={{ display: `grid`, placeItems: `center` }}
-          />
-        ) : error ? (
-          <p>{error}</p>
-        ) : (
-          <ContactList />
-        )}
-      </Section>
-    </Layout>
-  );
-};
+export const App = () => (
+  <Routes>
+    <Route path="/" element={<SharedLayout />}>
+      <Route index element={<Home />} />
+      <Route path="phonebook" element={<Phonebook />} />
+    </Route>
+    <Route path="*" element={<Navigate to="/" />} />
+  </Routes>
+);

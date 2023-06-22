@@ -1,3 +1,5 @@
+export { default as SharedLayout } from 'components/SharedLayout/SharedLayout';
+
 export * from 'components/App/App';
 export * from 'components/Section/Section';
 export * from 'components/ContactForm/ContactForm';
