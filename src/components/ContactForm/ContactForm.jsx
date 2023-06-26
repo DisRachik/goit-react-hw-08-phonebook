@@ -2,13 +2,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { RiUserAddFill } from 'react-icons/ri';
-import {
-  Form,
-  FormField,
-  Field,
-  ButtonForm,
-  ErrorMessage,
-} from './ContactForm.styled';
+import { Form, FormField, Field, ButtonForm, ErrorMessage } from 'styles';
 import { useContacts } from 'redux/contacts/useContacts';
 
 const ContactSchema = Yup.object().shape({
@@ -51,6 +45,8 @@ export const ContactForm = () => {
             required
           />
         </FormField>
+        <ErrorMessage name="name" component="div" />
+
         <FormField>
           <span>Number</span>
           <Field

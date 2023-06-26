@@ -1,4 +1,4 @@
-import { Layout } from 'components/App/Layout.styled';
+import { Layout } from 'components/SharedLayout/Layout.styled';
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
@@ -13,6 +13,12 @@ const SharedLayout = () => {
             </li>
             <li>
               <NavLink to="/phonebook">Phonebook</NavLink>
+            </li>
+            <li>
+              <NavLink to="/register">Register</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">Log in</NavLink>
             </li>
           </ul>
         </nav>

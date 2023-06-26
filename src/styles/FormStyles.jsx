@@ -19,6 +19,7 @@ export const Form = styled(FormikForm)`
 `;
 
 export const FormField = styled.label`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: ${props => props.theme.spacing(1)};
@@ -27,6 +28,12 @@ export const FormField = styled.label`
 
   span {
     color: ${props => props.theme.colors.light};
+  }
+
+  svg {
+    position: absolute;
+    bottom: ${props => props.theme.spacing(2)};
+    right: ${props => props.theme.spacing(5)};
   }
 `;
 
@@ -39,6 +46,10 @@ export const Field = styled(FormikField)`
     outline: ${props => props.theme.spacing(0.5)} solid
       ${props => props.theme.colors.accent};
     box-shadow: ${props => props.theme.shadows.small};
+
+    + svg {
+      color: ${props => props.theme.colors.accent};
+    }
   }
 `;
 
@@ -66,7 +77,7 @@ export const ButtonForm = styled.button`
 
   display: flex;
   align-items: center;
-  gap: ${props => props.theme.spacing(1.5)};
+  gap: ${props => props.theme.spacing(3)};
 
   font-weight: 700;
 
@@ -81,5 +92,22 @@ export const ButtonForm = styled.button`
   :focus {
     background-color: ${props => props.theme.colors.green};
     box-shadow: ${props => props.theme.shadows.regular};
+  }
+`;
+
+export const InformText = styled.p`
+  margin-top: ${props => props.theme.spacing(5)};
+  text-align: center;
+  color: ${props => props.theme.colors.dark};
+
+  a {
+    letter-spacing: 0.6px;
+    text-decoration: underline;
+
+    :hover,
+    :focus {
+      color: ${props => props.theme.colors.green};
+      text-shadow: ${props => props.theme.shadows.textShadow};
+    }
   }
 `;
