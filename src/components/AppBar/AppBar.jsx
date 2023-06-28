@@ -1,6 +1,10 @@
+import { useAuth } from 'redux/auth/useAuth';
 import { Header, NavigationSite, NavLink } from './AppBar.styled';
+import { AuthNav, UserNav } from 'components';
 
 export const AppBar = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
     <Header>
       <nav>
@@ -13,8 +17,8 @@ export const AppBar = () => {
           </li>
         </NavigationSite>
       </nav>
-      <NavLink to="/register">Register</NavLink>
-      <NavLink to="/login">Log in</NavLink>
+
+      {isLoggedIn ? <UserNav /> : <AuthNav />}
     </Header>
   );
 };

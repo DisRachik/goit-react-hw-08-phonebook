@@ -41,3 +41,13 @@ export const NavLink = styled(RouteNavLink)`
     box-shadow: ${props => props.theme.shadows.medium};
   }
 `;
+
+export const WrapAuthNav = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${props => props.theme.spacing(2)};
+
+  a {
+    min-width: ${props => props.theme.spacing(20)};
+  }
+`;

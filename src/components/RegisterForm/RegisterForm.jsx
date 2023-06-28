@@ -12,8 +12,7 @@ import {
   InformText,
 } from 'styles';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { registrationFetch } from 'redux/auth/operations';
+import { useAuth } from 'redux/auth/useAuth';
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string()
@@ -32,10 +31,10 @@ const RegisterSchema = Yup.object().shape({
 });
 
 export const RegisterForm = () => {
-  const dispatch = useDispatch();
+  const { registerUser } = useAuth();
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(registrationFetch(values));
+    registerUser(values);
     resetForm();
   };
 

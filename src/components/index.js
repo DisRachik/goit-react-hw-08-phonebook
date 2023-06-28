@@ -2,6 +2,8 @@ export { default as SharedLayout } from 'components/Layout';
 
 export * from 'components/App';
 export * from 'components/AppBar/AppBar';
+export * from 'components/AuthNav/AuthNav';
+export * from 'components/UserNav/UserNav';
 export * from 'components/Section/Section';
 export * from 'components/ContactForm/ContactForm';
 export * from 'components/ContactList/ContactList';
