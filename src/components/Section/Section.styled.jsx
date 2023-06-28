@@ -14,3 +14,11 @@ export const SectionTitle = styled.h2`
   box-shadow: ${props => props.theme.shadows.medium};
   border-radius: ${props => props.theme.spacing(2)};
 `;
+
+export const SectionSubtitle = styled.p`
+  margin-top: ${props => props.theme.spacing(6)};
+  padding: ${props => props.theme.spacing(2)};
+  text-align: center;
+  color: ${props => props.theme.colors.green};
+  text-shadow: ${props => props.theme.shadows.textShadow};
+`;

@@ -8,11 +8,15 @@ export const ContactList = () => {
 
   return (
     <ContactItems>
-      {contacts.map(({ id, name, phone }) => (
+      {contacts.map(({ id, name, number }) => (
         <ContactItem key={id}>
-          <RiBodyScanFill size={32} />
-          {name}: <span>{phone}</span>
-          <BtnDelete type="button" onClick={() => deleteContact(id)}>
+          <RiBodyScanFill size={32} aria-label="Icon for the contact" />
+          {name}: <span>{number}</span>
+          <BtnDelete
+            type="button"
+            aria-label="Delete this contact"
+            onClick={() => deleteContact(id)}
+          >
             <RiUserUnfollowFill size={24} />
           </BtnDelete>
         </ContactItem>

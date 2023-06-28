@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { NavLink as RouteNavLink } from 'react-router-dom';
+import { NavLink as RouteNavLink, Link } from 'react-router-dom';
 
 export const Header = styled.header`
   width: 80%;
@@ -14,7 +14,16 @@ export const Header = styled.header`
 
 export const NavigationSite = styled.ul`
   display: flex;
+  align-items: center;
   gap: ${props => props.theme.spacing(5)};
+`;
+
+export const Logo = styled(Link)`
+  display: flex;
+  gap: ${props => props.theme.spacing(1)};
+
+  color: ${props => props.theme.colors.accent};
+  font-size: ${props => props.theme.fontSizes.small};
 `;
 
 export const NavLink = styled(RouteNavLink)`
