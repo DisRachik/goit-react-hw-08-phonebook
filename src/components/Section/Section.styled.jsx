@@ -4,10 +4,7 @@ export const SectionWrap = styled.section`
   width: 90%;
   max-width: ${props => props.theme.spacing(125)};
   margin: 0 auto;
-
-  :not(:first-of-type) {
-    margin-top: ${props => props.theme.spacing(5)};
-  }
+  margin-top: ${props => props.theme.spacing(8)};
 `;
 
 export const SectionTitle = styled.h2`

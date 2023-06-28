@@ -12,6 +12,8 @@ import {
   InformText,
 } from 'styles';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { registrationFetch } from 'redux/auth/operations';
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string()
@@ -22,7 +24,7 @@ const RegisterSchema = Yup.object().shape({
     .email('Invalid email')
     .required('Please enter a valid email'),
   password: Yup.string()
-    .min(8, 'Must be at least 8 characters long')
+    .min(7, 'Must be at least 7 characters long')
     .max(16, 'Too Long!')
     .required(
       'Must be at least 8 characters long and not exceed 16 characters.'
@@ -30,6 +32,13 @@ const RegisterSchema = Yup.object().shape({
 });
 
 export const RegisterForm = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(registrationFetch(values));
+    resetForm();
+  };
+
   return (
     <Section title="Registration form">
       <Formik
@@ -39,9 +48,7 @@ export const RegisterForm = () => {
           password: '',
         }}
         validationSchema={RegisterSchema}
-        onSubmit={async (values, { resetForm }) => {
-          console.log(values);
-        }}
+        onSubmit={handleSubmit}
       >
         <Form>
           <FormField>
@@ -59,13 +66,7 @@ export const RegisterForm = () => {
 
           <FormField>
             <span>Email</span>
-            <Field
-              type="email"
-              name="email"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              title="Please enter a valid email address. For example, `example@example.com`"
-              required
-            />
+            <Field type="email" name="email" required />
             <TfiEmail size={24} />
           </FormField>
           <ErrorMessage name="email" component="div" />

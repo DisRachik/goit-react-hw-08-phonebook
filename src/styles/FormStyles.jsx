@@ -68,7 +68,8 @@ export const ErrorMessage = styled(FormikError)`
 `;
 
 export const ButtonForm = styled.button`
-  min-width: ${props => props.theme.spacing(16)};
+  width: 50%;
+  /* min-width: ${props => props.theme.spacing(16)}; */
   margin: ${props => props.theme.spacing(5)} auto 0;
   padding: ${props => props.theme.spacing(2)} ${props => props.theme.spacing(4)};
 
@@ -76,6 +77,7 @@ export const ButtonForm = styled.button`
   font-size: ${props => props.theme.fontSizes.small};
 
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: ${props => props.theme.spacing(3)};
 
@@ -103,6 +105,9 @@ export const InformText = styled.p`
   a {
     letter-spacing: 0.6px;
     text-decoration: underline;
+    color: ${props => props.theme.colors.red};
+
+    transition: ${props => props.theme.animation('text-shadow, color')};
 
     :hover,
     :focus {

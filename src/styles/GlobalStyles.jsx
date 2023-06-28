@@ -12,16 +12,13 @@ export const GlobalStyles = css`
       'Helvetica Neue', sans-serif;
 
     height: 100vh;
-    ${
-      '' /* width: 100vw;
-
-    display: flex;
-    justify-content: center;
-    align-items: center; */
-    }
 
     font-style: normal;
     color: #212121;
+    width: 100%;
+    min-height: 100vh;
+
+    background: linear-gradient(to bottom, #c9d6ff, #e2e2e2);
   }
 
   h1,
