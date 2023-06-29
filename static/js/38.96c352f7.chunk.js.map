@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/38.96c352f7.chunk.js","mappings":"2JAAQA,EAAcC,EAAQ,MAAtBD,UAIR,UAFc,kBAAM,SAACA,EAAD,GAAN,C","sources":["pages/Login.jsx"],"sourcesContent":["const { LoginForm } = require('components');\n\nconst Login = () => <LoginForm />;\n\nexport default Login;\n"],"names":["LoginForm","require"],"sourceRoot":""}
