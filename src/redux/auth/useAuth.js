@@ -11,8 +11,8 @@ export const useAuth = () => {
   const registerUser = newUser => {
     dispatch(registrationFetch(newUser));
   };
-  const userLogIn = user => {
-    dispatch(logIn(user));
+  const userLogIn = userData => {
+    dispatch(logIn(userData));
   };
   const userLogOut = () => {
     dispatch(logOut());

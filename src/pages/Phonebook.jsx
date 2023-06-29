@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 
-import { ThreeCircles } from 'react-loader-spinner';
-import { ContactForm, ContactList, Filter, Section } from 'components';
+import { ContactForm, ContactList, Filter, Loader, Section } from 'components';
 
 const Phonebook = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -22,15 +21,7 @@ const Phonebook = () => {
       </Section>
       <Section title="Contacts">
         <Filter />
-        {isLoading ? (
-          <ThreeCircles
-            wrapperStyle={{ display: `grid`, placeItems: `center` }}
-          />
-        ) : error ? (
-          <p>{error}</p>
-        ) : (
-          <ContactList />
-        )}
+        {isLoading ? <Loader /> : error ? <p>{error}</p> : <ContactList />}
       </Section>
     </>
   );
