@@ -9,10 +9,10 @@ export const useAuth = () => {
   const dispatch = useDispatch();
 
   const registerUser = newUser => {
-    dispatch(registrationFetch(newUser));
+    return dispatch(registrationFetch(newUser)).unwrap();
   };
   const userLogIn = userData => {
-    dispatch(logIn(userData));
+    return dispatch(logIn(userData)).unwrap();
   };
   const userLogOut = () => {
     dispatch(logOut());

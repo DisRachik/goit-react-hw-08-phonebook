@@ -13,6 +13,20 @@ const ContactSchema = Yup.object().shape({
 export const ContactForm = () => {
   const { contacts, addNewContact } = useContacts();
 
+  const handleSubmit = (values, { resetForm }) => {
+    if (
+      contacts.find(
+        ({ name }) => name.toLowerCase() === values.name.toLowerCase()
+      )
+    ) {
+      alert(`${values.name} is already in contacts`);
+      return;
+    }
+
+    addNewContact(values);
+    resetForm();
+  };
+
   return (
     <Formik
       initialValues={{
@@ -20,19 +34,7 @@ export const ContactForm = () => {
         number: '',
       }}
       validationSchema={ContactSchema}
-      onSubmit={(values, { resetForm }) => {
-        if (
-          contacts.find(
-            ({ name }) => name.toLowerCase() === values.name.toLowerCase()
-          )
-        ) {
-          alert(`${values.name} is already in contacts`);
-          return;
-        }
-
-        addNewContact(values);
-        resetForm();
-      }}
+      onSubmit={handleSubmit}
     >
       <Form>
         <FormField>

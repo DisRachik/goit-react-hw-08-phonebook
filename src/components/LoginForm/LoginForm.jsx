@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import toast, { Toaster } from 'react-hot-toast';
 
 import { TfiEmail, TfiLock, TfiShare } from 'react-icons/tfi';
 import { Section } from 'components';
@@ -29,12 +30,18 @@ const LoginSchema = Yup.object().shape({
 export const LoginForm = () => {
   const { userLogIn } = useAuth();
   const handleSubmit = (values, { resetForm }) => {
-    userLogIn(values);
-    resetForm();
+    userLogIn(values)
+      .then(() => {
+        resetForm();
+      })
+      .catch(() => {
+        toast.error('Invalid e-mail or password. Try again.');
+      });
   };
 
   return (
     <Section title="Log in">
+      <Toaster />
       <Formik
         initialValues={{
           name: '',

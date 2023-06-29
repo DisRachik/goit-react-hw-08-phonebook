@@ -2,9 +2,9 @@ import { useAuth } from 'redux/auth/useAuth';
 
 import { ImExit } from 'react-icons/im';
 import { WrapAuthNav } from 'components/AppBar/AppBar.styled';
-import { BtnLogOut, Greeting } from './UserNav.styled';
+import { BtnLogOut, Greeting } from './UserMenu.styled';
 
-export const UserNav = () => {
+export const UserMenu = () => {
   const { user, userLogOut } = useAuth();
 
   return (

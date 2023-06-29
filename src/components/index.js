@@ -1,9 +1,11 @@
 export { default as Layout } from 'components/Layout';
 
 export * from 'components/App';
+export * from 'components/RestrictedRoute';
+export * from 'components/PrivateRoute';
 export * from 'components/AppBar/AppBar';
 export * from 'components/AuthNav/AuthNav';
-export * from 'components/UserNav/UserNav';
+export * from 'components/UserMenu/UserMenu';
 export * from 'components/Section/Section';
 export * from 'components/ContactForm/ContactForm';
 export * from 'components/ContactList/ContactList';

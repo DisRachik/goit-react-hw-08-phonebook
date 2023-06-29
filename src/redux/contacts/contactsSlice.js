@@ -12,6 +12,9 @@ const contactsSlice = createSlice({
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
         state.items = payload;
       })
+      .addCase(fetchContacts.pending, state => {
+        state.isLoading = true;
+      })
       // delete contact
       .addCase(deleteContactId.fulfilled, (state, { payload }) => {
         state.items = state.items.filter(({ id }) => id !== payload.id);
@@ -30,17 +33,6 @@ const contactsSlice = createSlice({
         state => {
           state.isLoading = false;
           state.error = null;
-        }
-      )
-      // duplicate actions for all pending
-      .addMatcher(
-        isAnyOf(
-          fetchContacts.pending,
-          deleteContactId.pending,
-          addContact.pending
-        ),
-        state => {
-          state.isLoading = true;
         }
       )
       // duplicate actions for all rejected

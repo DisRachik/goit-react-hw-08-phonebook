@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import toast, { Toaster } from 'react-hot-toast';
 
 import { TfiUser, TfiEmail, TfiLock, TfiWrite } from 'react-icons/tfi';
 import { Section } from 'components';
@@ -34,12 +35,18 @@ export const RegisterForm = () => {
   const { registerUser } = useAuth();
 
   const handleSubmit = (values, { resetForm }) => {
-    registerUser(values);
-    resetForm();
+    registerUser(values)
+      .then(() => {
+        resetForm();
+      })
+      .catch(() => {
+        toast.error('A user with that email address already exists');
+      });
   };
 
   return (
     <Section title="Registration form">
+      <Toaster />
       <Formik
         initialValues={{
           name: '',

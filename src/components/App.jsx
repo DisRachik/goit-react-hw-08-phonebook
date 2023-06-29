@@ -1,6 +1,6 @@
 import { lazy, useEffect } from 'react';
 
-import { Loader, Layout } from 'components';
+import { Loader, Layout, PrivateRoute, RestrictedRoute } from 'components';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -25,9 +25,24 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="phonebook" element={<Phonebook />} />
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
+        <Route
+          path="/phonebook"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Phonebook />} />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/phonebook" component={<Register />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/phonebook" component={<Login />} />
+          }
+        />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
