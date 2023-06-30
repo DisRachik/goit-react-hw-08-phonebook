@@ -1,11 +1,11 @@
-goit-react-hw-07-phonebook
+## App - Phonebook: <br/>
 
----
+This program is a small phone book to save the name and numbers.
 
-## App - Phonebook:
+## Features: <br/>
 
-- Used library [Redux Toolkit](https://redux-toolkit.js.org/)
-
-- add interaction with the backend to store contact data.
-- The backend is implemented using the UI service
-  [mockapi.io](https://mockapi.io/).
+- Sign up, Log in, Log Out
+- Your personal phonebook
+- Add contact's (name and number)
+- Search among your contacts
+- Delete contacts
