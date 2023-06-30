@@ -1,11 +1,17 @@
 import styled from '@emotion/styled';
 
 export const Greeting = styled.p`
+  min-width: ${props => props.theme.spacing(28.5)};
   font-size: ${props => props.theme.fontSizes.small};
   font-weight: 700;
+
+  @media screen and (max-width: 540px) {
+    margin-right: ${props => props.theme.spacing(2)};
+  }
 `;
 
 export const BtnLogOut = styled.button`
+  min-width: ${props => props.theme.spacing(31)};
   padding: ${props => props.theme.spacing(2)} ${props => props.theme.spacing(4)};
 
   display: flex;

@@ -6,6 +6,7 @@ export const ContactItems = styled.ul`
   color: ${props => props.theme.colors.light};
   background: ${props => props.theme.colors.cardBackground};
   border-radius: 0 ${props => props.theme.spacing(4)};
+  overflow: hidden;
 `;
 
 export const ContactItem = styled.li`
@@ -23,7 +24,19 @@ export const ContactItem = styled.li`
   svg {
     flex-shrink: 0;
   }
+
+  @media screen and (max-width: 540px) {
+    gap: ${props => props.theme.spacing(2)};
+    padding: ${props => props.theme.spacing(1)};
+    font-size: ${props => props.theme.fontSizes.small};
+
+    /* svg {
+      width: 24px;
+    } */
+  }
 `;
+
+export const ContactWrap = styled.p``;
 
 export const BtnDelete = styled.button`
   flex-shrink: 0;

@@ -1,14 +1,20 @@
 import { useAuth } from 'redux/auth/useAuth';
 import { AuthNav, UserMenu } from 'components';
 import { RiContactsBookLine } from 'react-icons/ri';
-import { Header, Logo, NavigationSite, NavLink } from './AppBar.styled';
+import {
+  Header,
+  Logo,
+  NavigationSite,
+  NavLink,
+  NavStile,
+} from './AppBar.styled';
 
 export const AppBar = () => {
   const { isLoggedIn } = useAuth();
 
   return (
     <Header>
-      <nav>
+      <NavStile>
         <NavigationSite>
           <li>
             <Logo to="/">
@@ -25,7 +31,7 @@ export const AppBar = () => {
             </li>
           )}
         </NavigationSite>
-      </nav>
+      </NavStile>
 
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </Header>

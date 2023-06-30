@@ -5,6 +5,10 @@ export const SectionWrap = styled.section`
   max-width: ${props => props.theme.spacing(125)};
   margin: 0 auto;
   margin-top: ${props => props.theme.spacing(8)};
+
+  @media screen and (max-width: 540px) {
+    width: 98%;
+  }
 `;
 
 export const SectionTitle = styled.h2`

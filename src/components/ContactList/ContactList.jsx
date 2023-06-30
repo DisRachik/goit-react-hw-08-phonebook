@@ -1,7 +1,12 @@
 import { useContacts } from 'redux/contacts/useContacts';
 
 import { RiBodyScanFill, RiUserUnfollowFill } from 'react-icons/ri';
-import { ContactItems, ContactItem, BtnDelete } from './ContactList.styled';
+import {
+  ContactItems,
+  ContactItem,
+  BtnDelete,
+  ContactWrap,
+} from './ContactList.styled';
 
 export const ContactList = () => {
   const { contacts, deleteContact } = useContacts();
@@ -11,7 +16,9 @@ export const ContactList = () => {
       {contacts.map(({ id, name, number }) => (
         <ContactItem key={id}>
           <RiBodyScanFill size={32} aria-label="Icon for the contact" />
-          {name}: <span>{number}</span>
+          <ContactWrap>
+            {name}: <span>{number}</span>
+          </ContactWrap>
           <BtnDelete
             type="button"
             aria-label="Delete this contact"
